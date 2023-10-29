@@ -56,9 +56,9 @@ const questions = [
   }
 ];
 
-const questionEl = $("#question");
-const answerButtons = $("#answer-buttons");
-const nextButton = $("#next-btn");
+const questionEl = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -72,16 +72,16 @@ function startQuiz() {
 
 function showQuestion() {
   resetState();
-  let currentQuestiion = questions[currentQuestionIndex];
+  let currentQuestion = questions[currentQuestionIndex];
   let questionNo = currentQuestionIndex + 1;
-  questionEl.innerHTML = questionNo + ". " + currentQuestiion.question;
+  questionEl.innerHTML = questionNo + ". " + currentQuestion.question;
 
-  currentQuestiion.answers.forEach((answer) => {
+  currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerHTML = answer.text;
     button.classList.add("btn");
     answerButtons.appendChild(button);
-    if(answer.correct){
+    if (answer.correct) { 
         button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
@@ -90,7 +90,7 @@ function showQuestion() {
 
 function resetState() {
     nextButton.style.display = "none";
-     while (answerButtons.firstChild) {
+     while(answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
      }
 }
