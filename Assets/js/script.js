@@ -6,7 +6,7 @@ const questions = [
       { text: "scripting", correct: false },
       { text: "javascript", correct: true },
       { text: "js", correct: true },
-    ],
+    ]
   },
   {
     question:
@@ -25,7 +25,7 @@ const questions = [
         text: "document.getElement('p').innerHTML = 'Hello World!';",
         correct: false,
       },
-    ],
+    ]
   },
   {
     question: "How do you write 'Hello World' in an alert box?",
@@ -34,7 +34,7 @@ const questions = [
       { text: "msg('Hello World');", correct: false },
       { text: "alertBox('Hello World');", correct: false },
       { text: "alert('Hello World');", correct: true },
-    ],
+    ]
   },
   {
     question: "How does a FOR loop start?",
@@ -43,7 +43,7 @@ const questions = [
       { text: "for (i <= 5; i++)", correct: false },
       { text: "for (i = 0; i <= 5; i++) ", correct: true },
       { text: "for (i = 0; i <= 5)", correct: false },
-    ],
+    ]
   },
   {
     question: "How to write an IF statement in JavaScript?",
@@ -52,8 +52,8 @@ const questions = [
       { text: "if (i == 5)", correct: true },
       { text: "if i = 5 then", correct: false },
       { text: "if i = 5", correct: false },
-    ],
-  },
+    ]
+  }
 ];
 
 const questionEl = $("#question");
