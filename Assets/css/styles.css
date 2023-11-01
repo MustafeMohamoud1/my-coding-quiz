@@ -50,6 +50,17 @@ body {
 .btn:disabled {
   cursor: no-drop;
 }
+#high-scores{
+    background: #001e4d;
+    color: #fff;
+    font-weight: 400;
+    width: 100px;
+    border: 0;
+    padding: 5px;
+    margin: 10px auto 0;
+    border-radius: 2px;
+    cursor: pointer;   
+}
 #next-btn {
   background: #001e4d;
   color: #fff;
