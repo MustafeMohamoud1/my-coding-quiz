@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let questionNo = currentQuestionIndex + 1;
         questionEl.innerHTML = questionNo + ". " + currentQuestion.question;
       
-        currentQuestion.answers.forEach((answer) => {
+        currentQuestion.answers.forEach(answer => {
           const button = document.createElement("button");
           button.innerHTML = answer.text;
           button.classList.add("btn");
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
            }
       }
       
-      function selectAnswer(e) {
+      function selectAnswer(e){
           const selectedBtn = e.target;
           const isCorrect = selectedBtn.dataset.correct === "true";
           if (isCorrect) {
@@ -115,15 +115,28 @@ document.addEventListener("DOMContentLoaded", function() {
           nextButton.style.display = "block";
       }
 
+      function showScore() {
+        resetState();
+        questionEl.innerHTML = 'You scored ${score} out of ${questions.lenghth}';
+        nextButton.innerHTML = "Play Again";
+        nextButton.style.display = "block"
+      }
+      function handleNextButton(){
+        currentQuestionIndex++;
+        if(currentQuestionIndex < questions.length) {
+            showQuestion();
+        }else{
+            showScore();
+        }
+      }
 
-      
       nextButton.addEventListener("click", ()=>{
-        if (currentQuestionIndex < questions.length) {
+        if(currentQuestionIndex < questions.length){
             handleNextButton();
         }else{
             startQuiz();
         }
-      })
+      });
       startQuiz();
 });
 
