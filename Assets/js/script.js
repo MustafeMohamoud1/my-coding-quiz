@@ -124,7 +124,7 @@ while (playerName === null || playerName.trim() === "") {
       score++;
     } else {
       selectedBtn.classList.add("incorrect");
-      timeLeft -= 10;
+      timeLeft -= 20;
     }
     Array.from(answerButtons.children).forEach((button) => {
       if (button.dataset.correct === "true") {

@@ -5,10 +5,10 @@
   box-sizing: border-box;
 }
 body {
-  background: #481393;
+  background: #138c93;
 }
-body p {
-  background: #2568d4;
+body #countdown {
+  background: #db761e;
   color: #fff;
   font-weight: 400;
   width: 100px;
