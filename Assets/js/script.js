@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  let playerName = prompt("What is your name");
+
+while (playerName === null || playerName.trim() === "") {
+  playerName = prompt("Please enter your name");
+};
+
   const questions = [
     {
       question: "Inside which HTML element do we put the JavaScript?",
@@ -60,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionEl = document.getElementById("question");
   const answerButtons = document.getElementById("answer-buttons");
   const nextButton = document.getElementById("next-btn");
-  const playerName = prompt("What is your name?");
   let currentQuestionIndex = 0;
   let score = 0;
 
