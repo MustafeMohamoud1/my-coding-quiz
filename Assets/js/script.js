@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Your code here
   const questions = [
     {
       question: "Inside which HTML element do we put the JavaScript?",
@@ -131,20 +130,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showScores() {
     resetState();
-    clearInterval(countdownInterval);
-    questionEl.innerHTML =
-      "You scored " + score + " out of " + questions.length + " " + playerName;
-    const highScoresList = document.createElement("ul");
-    const playerData = { name: playerName, score: score };
-    const highScoresEl = document.createElement("li");
-    const highScoresTitle = document.createElement("h2");
-    highScoresList.appendChild(highScoresTitle);
-    highScoresEl.textContent = playerData.name + ": " + playerData.score;
-    highScoresList.appendChild(highScoresEl);
-    highScoresTitle.textContent = "Highest scores";
-    questionEl.appendChild(highScoresList);
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
+  clearInterval(countdownInterval);
+  const playerData = { name: playerName, score: score };
+
+  // Retrieve existing high scores from local storage (if any)
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+  // Add the current player's score to the high scores
+  highScores.push(playerData);
+
+  // Sort the high scores in descending order (highest score first)
+  highScores.sort((a, b) => b.score - a.score);
+
+  // Limit the number of high scores to display (e.g., top 10)
+  const maxHighScores = 10;
+  highScores.splice(maxHighScores);
+
+  // Save the updated high scores to local storage
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+
+  questionEl.innerHTML = "You scored " + score + " out of " + questions.length + " " + playerName;
+
+  const highScoresList = document.createElement("ul");
+  highScoresList.innerHTML = "<h2>Highest Scores</h2>";
+
+  highScores.forEach((entry, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = entry.name + ": " + entry.score;
+    highScoresList.appendChild(listItem);
+  });
+
+  questionEl.appendChild(highScoresList);
+  
+  nextButton.innerHTML = "Play Again";
+  nextButton.style.display = "block";
   }
 
   function handleNextButton() {
