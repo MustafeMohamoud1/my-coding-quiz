@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
           answers: [
             { text: "script", correct: true },
             { text: "scripting", correct: false },
-            { text: "javascript", correct: true },
-            { text: "js", correct: true },
+            { text: "javascript", correct: false },
+            { text: "js", correct: false },
           ]
         },
         {
@@ -102,10 +102,28 @@ document.addEventListener("DOMContentLoaded", function() {
           const isCorrect = selectedBtn.dataset.correct === "true";
           if (isCorrect) {
               selectedBtn.classList.add("correct");
+              score++;
           }else{
               selectedBtn.classList.add("incorrect");
           }
+          Array.from(answerButtons.children).forEach(button => {
+            if(button.dataset.correct === "true"){
+                button.classList.add("correct");
+            }
+            button.disabled = true;
+          });
+          nextButton.style.display = "block";
       }
+
+
+      
+      nextButton.addEventListener("click", ()=>{
+        if (currentQuestionIndex < questions.length) {
+            handleNextButton();
+        }else{
+            startQuiz();
+        }
+      })
       startQuiz();
 });
 
