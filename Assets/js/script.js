@@ -122,26 +122,22 @@ document.addEventListener("DOMContentLoaded", function () {
       "You scored " + score + " out of " + questions.length + " " + playerName;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
-    // const playerData = { name: playerName, score: score };
-    // const highScoresEl = document.createElement("li");
-    // highScoresEl.textContent = playerData.name + ": " + playerData.score;
-    // appEl.appendChild(highScoresEl);
   }
 
-  function showHighscores(){
+  function showHighscores() {
     const playerData = { name: playerName, score: score };
     const highScoresEl = document.createElement("li");
     highScoresEl.textContent = playerData.name + ": " + playerData.score;
-    questionEl.textContent = "Highest scores"
+    questionEl.textContent = "Highest scores";
     questionEl.appendChild(highScoresEl);
   }
 
-  highScoreButton.addEventListener("click", () =>{
+  highScoreButton.addEventListener("click", () => {
     resetState();
     showHighscores();
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
-  })
+  });
 
   function handleNextButton() {
     currentQuestionIndex++;
