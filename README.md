@@ -25,10 +25,10 @@ Use online resources and communities for guidance.
 
 Below is a screenshot of my finished product along with a link to my repo and deployed web page:
 
-![Image1](Assets/images/Screenshot%202023-11-01%20at%2023.40.47.png)
-![Image2](Assets/images/Screenshot%202023-11-01%20at%2023.41.06.png)
-![Image3](Assets/images/Screenshot%202023-11-01%20at%2023.41.15.png)
-![Image4](Assets/images/Screenshot%202023-11-01%20at%2023.41.22.png)
+![Image1](Assets/images/Screenshot%202023-11-01%20at%2023.41.06.png)
+![Image2](Assets/images/Screenshot%202023-11-01%20at%2023.41.15.png)
+![Image3](Assets/images/Screenshot%202023-11-01%20at%2023.41.22.png)
+![Image4](Assets/images/Screenshot%202023-11-01%20at%2023.40.47.png)
 
 <a target="_blank" href="https://mustafemohamoud1.github.io/my-coding-quiz">Deployed webpage</a>
 
