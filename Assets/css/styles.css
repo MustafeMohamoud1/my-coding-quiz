@@ -5,7 +5,17 @@
   box-sizing: border-box;
 }
 body {
-  background: #669313;
+  background: #481393;
+}
+body p {
+  background: #2568d4;
+  color: #fff;
+  font-weight: 400;
+  width: 100px;
+  border: 0;
+  padding: 5px;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 .app {
   background: #fff;
@@ -50,19 +60,19 @@ body {
 .btn:disabled {
   cursor: no-drop;
 }
-#high-scores{
-    background: #001e4d;
-    color: #fff;
-    font-weight: 400;
-    width: 100px;
-    border: 0;
-    padding: 5px;
-    margin: 10px auto 0;
-    border-radius: 2px;
-    cursor: pointer;   
+#high-scores {
+  background: #2568d4;
+  color: #fff;
+  font-weight: 400;
+  width: 100px;
+  border: 0;
+  padding: 5px;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  cursor: pointer;
 }
 #next-btn {
-  background: #001e4d;
+  background: #2568d4;
   color: #fff;
   font-weight: 500;
   width: 150px;

@@ -62,15 +62,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const answerButtons = document.getElementById("answer-buttons");
   const nextButton = document.getElementById("next-btn");
   const playerName = prompt("What is your name?");
-  const highScoreButton = document.getElementById("high-scores");
   let currentQuestionIndex = 0;
   let score = 0;
+
+  const initialCountdownTime = 2 * 60; // 2 minutes in seconds
+  let timeLeft = initialCountdownTime;
+  const countdownElement = document.getElementById("countdown");
+  let countdownInterval;
+
+  function updateCountdown() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    countdownElement.textContent = `${minutes}:${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+  }
 
   function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion();
+    startCountdown();
   }
 
   function showQuestion() {
@@ -116,44 +129,64 @@ document.addEventListener("DOMContentLoaded", function () {
     nextButton.style.display = "block";
   }
 
-  function showScore() {
+  function showScores() {
     resetState();
+    clearInterval(countdownInterval);
     questionEl.innerHTML =
       "You scored " + score + " out of " + questions.length + " " + playerName;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
-  }
-
-  function showHighscores() {
+    const highScoresList = document.createElement("ul");
     const playerData = { name: playerName, score: score };
     const highScoresEl = document.createElement("li");
+    const highScoresTitle = document.createElement("h2");
+    highScoresList.appendChild(highScoresTitle);
     highScoresEl.textContent = playerData.name + ": " + playerData.score;
-    questionEl.textContent = "Highest scores";
-    questionEl.appendChild(highScoresEl);
-  }
-
-  highScoreButton.addEventListener("click", () => {
-    resetState();
-    showHighscores();
+    highScoresList.appendChild(highScoresEl);
+    highScoresTitle.textContent = "Highest scores";
+    questionEl.appendChild(highScoresList);
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
-  });
+  }
 
   function handleNextButton() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
       showQuestion();
     } else {
-      showScore();
+      showScores();
     }
+  }
+
+  function resetCountdown() {
+    clearInterval(countdownInterval);
+    timeLeft = initialCountdownTime;
+    updateCountdown();
+  }
+
+  function startCountdown() {
+    updateCountdown(); // Display the initial countdown
+    countdownInterval = setInterval(function () {
+      if (timeLeft > 0) {
+        timeLeft--;
+        updateCountdown();
+      } else {
+        clearInterval(countdownInterval);
+        showScores(); // Trigger the end of the quiz when the time is up
+      }
+    }, 1000); // Update every 1 second
   }
 
   nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length) {
       handleNextButton();
     } else {
+      resetCountdown();
       startQuiz();
+      const highScoresEl = document.querySelector("li");
+      if (highScoresEl) {
+        highScoresEl.remove();
+      }
     }
   });
+
   startQuiz();
 });
