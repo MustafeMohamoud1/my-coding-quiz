@@ -159,7 +159,7 @@ while (playerName === null || playerName.trim() === "") {
   questionEl.innerHTML = "You scored " + score + " out of " + questions.length + " " + playerName;
 
   const highScoresList = document.createElement("ul");
-  highScoresList.innerHTML = "<h2>Highest Scores</h2>";
+  highScoresList.innerHTML = "<h3>Highest Scores</h3>";
 
   highScores.forEach((entry, index) => {
     const listItem = document.createElement("li");

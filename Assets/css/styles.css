@@ -35,6 +35,12 @@ body #countdown {
 .quiz {
   padding: 20px 0;
 }
+.quiz ul{
+  padding: 10px;
+  font-size: 14px;
+  color: #001e4d;
+  font-weight: 400;  
+}
 .quiz h2 {
   font-size: 18px;
   color: #001e4d;
